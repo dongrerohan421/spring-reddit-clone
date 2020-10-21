@@ -2,6 +2,8 @@ package com.springredditclone.model;
 
 import java.util.Arrays;
 
+import com.springredditclone.exceptions.SubredditNotFoundException;
+
 public enum VoteType {
     UPVOTE(1), DOWNVOTE(-1),;
 
@@ -12,7 +14,7 @@ public enum VoteType {
 
     public static VoteType lookup(Integer direction) {
         return Arrays.stream(VoteType.values()).filter(value -> value.getDirection().equals(direction)).findAny()
-                .orElseThrow(() -> new SpringRedditExcetion("Vote not found"));
+                .orElseThrow(() -> new SubredditNotFoundException("Vote not found"));
     }
 
     public Integer getDirection() {
