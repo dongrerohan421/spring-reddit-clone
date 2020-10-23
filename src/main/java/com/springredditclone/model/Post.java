@@ -43,7 +43,7 @@ public class Post {
     private Integer voteCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", referencedColumnName = "id")
+    @JoinColumn(name = "userId", referencedColumnName = "userId")
     private User user;
 
     private Instant createdDate;
