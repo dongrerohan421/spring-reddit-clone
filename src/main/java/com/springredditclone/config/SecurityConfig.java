@@ -12,8 +12,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf().disable().authorizeRequests().antMatchers("/api/auth/**").permitAll().anyRequest()
-                .authenticated();
+        httpSecurity.csrf().disable().authorizeRequests().antMatchers("/api/auth/**", "/h2-console/**").permitAll()
+                .anyRequest().authenticated();
+        // add this line to use H2 web console
+        httpSecurity.headers().frameOptions().disable();
     }
 
     @Bean
